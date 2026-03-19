@@ -1,0 +1,117 @@
+{
+  "version": 4,
+  "terraform_version": "1.14.5",
+  "serial": 9,
+  "lineage": "d89e8080-fab9-e635-6e41-028c5aa469d4",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "local_file",
+      "name": "app_info",
+      "provider": "provider[\"registry.terraform.io/hashicorp/local\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "content": "App ID:   9e9p72yy\nCreated:  managed by Terraform\nVersion:  2.0\n",
+            "content_base64": null,
+            "content_base64sha256": "sUWza0XNzJucaL7lP2uisU7MhDUbuH/B3HeMx6T/N7g=",
+            "content_base64sha512": "MpvB2kZQD99m/pXSmDa93rQBSMg6eUmpq5+cMQ1t1A8TxhXrT5ElJCXwQLmQ3HU0oxrQmWVmxm48emmaAzMzPA==",
+            "content_md5": "2fa3d38d0c55f358e4c97efc61f559cb",
+            "content_sha1": "c0b691bafcecba0a8b193d5dec8e323e8ef84b89",
+            "content_sha256": "b145b36b45cdcc9b9c68bee53f6ba2b14ecc84351bb87fc1dc778cc7a4ff37b8",
+            "content_sha512": "329bc1da46500fdf66fe95d29836bddeb40148c83a7949a9ab9f9c310d6dd40f13c615eb4f91252425f040b990dc7534a31ad0996566c66e3c7a699a0333333c",
+            "directory_permission": "0777",
+            "file_permission": "0777",
+            "filename": "./output/app_info.txt",
+            "id": "c0b691bafcecba0a8b193d5dec8e323e8ef84b89",
+            "sensitive_content": null,
+            "source": null
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "sensitive_content"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "dependencies": [
+            "random_string.app_id"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "local_file",
+      "name": "inventory",
+      "provider": "provider[\"registry.terraform.io/hashicorp/local\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "content": "[app_servers]\napp-9e9p72yy ansible_host=192.168.1.10\n\n[all:vars]\napp_version=2.0\n",
+            "content_base64": null,
+            "content_base64sha256": "AmRQdDkMBnXntLWCaD3FOZq37cjBN2Z0Dc9XQBGYCFo=",
+            "content_base64sha512": "2I/B2JAuI6XT7TG0drZh8E+zs34wfOGajhgsIbm0X01n2p0Cd053dnm3OgpDM5/SQohUmJQn5+gCxPh7r/3ycA==",
+            "content_md5": "8e032c7409f4079e1cc022004bb810b2",
+            "content_sha1": "34db5f753fa694fbe500cffa9be5f9e2460f8653",
+            "content_sha256": "02645074390c0675e7b4b582683dc5399ab7edc8c13766740dcf57401198085a",
+            "content_sha512": "d88fc1d8902e23a5d3ed31b476b661f04fb3b37e307ce19a8e182c21b9b45f4d67da9d02774e777679b73a0a43339fd2428854989427e7e802c4f87baffdf270",
+            "directory_permission": "0777",
+            "file_permission": "0777",
+            "filename": "./output/inventory.ini",
+            "id": "34db5f753fa694fbe500cffa9be5f9e2460f8653",
+            "sensitive_content": null,
+            "source": null
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "sensitive_content"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "dependencies": [
+            "random_string.app_id"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "random_string",
+      "name": "app_id",
+      "provider": "provider[\"registry.terraform.io/hashicorp/random\"]",
+      "instances": [
+        {
+          "schema_version": 2,
+          "attributes": {
+            "id": "9e9p72yy",
+            "keepers": null,
+            "length": 8,
+            "lower": true,
+            "min_lower": 0,
+            "min_numeric": 0,
+            "min_special": 0,
+            "min_upper": 0,
+            "number": true,
+            "numeric": true,
+            "override_special": null,
+            "result": "9e9p72yy",
+            "special": false,
+            "upper": false
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}
