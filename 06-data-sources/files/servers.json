@@ -1,0 +1,10 @@
+{
+  "servers": [
+    { "name": "web-01", "ip": "192.168.1.10", "role": "web" },
+    { "name": "web-02", "ip": "192.168.1.11", "role": "web" },
+    { "name": "web-03", "ip": "192.168.1.12", "role": "web" },
+    { "name": "db-01",  "ip": "192.168.1.20", "role": "db"  }
+  ],
+  "environment": "dev",
+  "domain": "internal.example.com"
+}
