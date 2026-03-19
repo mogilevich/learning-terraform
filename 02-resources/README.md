@@ -31,7 +31,9 @@ docker exec learn-terraform-cache redis-cli ping  # PONG
 
 ## Эксперименты
 
-Это главная часть урока. Делай изменения и смотри что покажет `terraform plan`.
+Это главная часть урока. Делай изменения, смотри `terraform plan` и обязательно применяй через `terraform apply` — только так увидишь реальный результат.
+
+> `terraform plan` — превью (ничего не меняет). `terraform apply` — выполнить.
 
 ### Эксперимент 1: Replace (пересоздание)
 
@@ -42,19 +44,31 @@ Docker-контейнеры иммутабельны — **любое** изме
 resource "docker_container" "web" {
   name  = "learn-terraform-web-v2"   # было "learn-terraform-web"
 ```
-Запусти `terraform plan` — увидишь `-/+ must be replaced`.
+
+```bash
+terraform plan    # смотришь: -/+ must be replaced
+terraform apply   # применяешь: старый контейнер удалён, создан новый
+docker ps         # видишь новое имя
+```
 
 ### Эксперимент 2: Удаление ресурса
 
 Закомментируй или удали весь блок `docker_container.cache` и `docker_image.redis`.
-Запусти `terraform plan` — увидишь `- destroy`. Terraform удалит то, чего больше нет в коде.
+
+```bash
+terraform plan    # смотришь: - destroy
+terraform apply   # применяешь: контейнер и образ удалены
+docker ps         # cache-контейнера больше нет
+```
+
+Terraform удалит то, чего больше нет в коде.
 
 ### Эксперимент 3: -target — работа с конкретным ресурсом
 
 Флаг `-target` работает с `plan`, `apply` и `destroy` — как `--limit` / `--tags` в Ansible, только точнее (конкретный ресурс, а не группа хостов).
 
 ```bash
-# Посмотреть план только для одного ресурса
+# Посмотреть план только для одного ресурса (ничего не меняет)
 terraform plan -target=docker_container.cache
 
 # Применить изменения только для одного ресурса
@@ -65,6 +79,7 @@ terraform destroy -target=docker_container.cache
 
 # Несколько целей сразу
 terraform plan -target=docker_container.cache -target=docker_image.redis
+terraform apply -target=docker_container.cache -target=docker_image.redis
 ```
 
 ## Ключевые выводы

@@ -1,0 +1,5 @@
+.terraform/
+*.tfstate
+*.tfstate.backup
+# Генерируемые файлы — не коммитим (содержат пароли)
+output/

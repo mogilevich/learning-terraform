@@ -20,8 +20,8 @@
 cd 03-variables
 
 terraform init
-terraform plan        # спросит environment (нет default)
-terraform apply       # покажет outputs в конце
+terraform plan        # превью: спросит environment (нет default), ничего не создаёт
+terraform apply       # применить: создаст контейнер, покажет outputs в конце
 
 # Посмотреть outputs после apply (без повторного apply)
 terraform output
@@ -30,17 +30,21 @@ terraform output access_url
 
 ## Эксперименты
 
+> Во всех экспериментах: сначала `plan` (посмотреть что изменится), потом `apply` (применить).
+
 ### Эксперимент 1: Способы передачи переменных
 
 ```bash
 # Через командную строку (высший приоритет, как -e в Ansible)
 terraform plan -var="environment=prod" -var="external_port=9090"
+terraform apply -var="environment=prod" -var="external_port=9090"
 
 # Через переменную окружения (префикс TF_VAR_)
-TF_VAR_environment=staging terraform plan
+TF_VAR_environment=staging terraform apply
 
 # Через отдельный файл
 terraform plan -var-file="prod.tfvars"
+terraform apply -var-file="prod.tfvars"
 ```
 
 ### Эксперимент 2: Создай prod.tfvars
@@ -56,9 +60,10 @@ env_vars = [
 ]
 ```
 
-Запусти:
 ```bash
-terraform plan -var-file="prod.tfvars"
+terraform plan -var-file="prod.tfvars"    # превью: увидишь новое имя контейнера
+terraform apply -var-file="prod.tfvars"   # применить
+docker ps                                  # контейнер с новым именем
 ```
 
 ### Эксперимент 3: Validation (проверка значений)
@@ -76,7 +81,7 @@ variable "environment" {
 }
 ```
 
-Попробуй передать невалидное значение:
+Попробуй передать невалидное значение (validation срабатывает ещё на plan):
 ```bash
 terraform plan -var="environment=test"
 # Error: environment должен быть dev, staging или prod
