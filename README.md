@@ -31,6 +31,7 @@ plugins=(... terraform)
 | [05-state](05-state/) | State | Как работает state, `terraform state` команды, refresh |
 | [06-data-sources](06-data-sources/) | Data sources | `data {}` vs `resource {}`, `jsondecode()`, for-выражения |
 | [07-modules](07-modules/) | Модули | Переиспользование, inputs/outputs модуля, аналог ролей Ansible |
+| [08-loops](08-loops/) | Циклы | `count`, `for_each`, `each.key/value`, for-выражения в outputs |
 
 ## Рабочий цикл в каждом уроке
 
