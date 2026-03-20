@@ -16,6 +16,8 @@ This is a Terraform learning repository for experimenting with infrastructure-as
 - `terraform validate` — check configuration syntax and consistency
 - 'terraform taint aws_instance.my_webserver' - 
 - 'terraform console' -
+- 'terraform output' - 
+- 'terraform show' - 
 
 ## Conventions
 
