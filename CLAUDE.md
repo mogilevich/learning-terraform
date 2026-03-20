@@ -14,6 +14,8 @@ This is a Terraform learning repository for experimenting with infrastructure-as
 - `terraform destroy` — tear down managed infrastructure
 - `terraform fmt` — format .tf files to canonical style
 - `terraform validate` — check configuration syntax and consistency
+- 'terraform taint aws_instance.my_webserver' - 
+- 'terraform console' -
 
 ## Conventions
 
